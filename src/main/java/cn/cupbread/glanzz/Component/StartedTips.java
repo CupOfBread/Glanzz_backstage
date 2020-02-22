@@ -15,6 +15,6 @@ import org.springframework.stereotype.Component;
 public class StartedTips implements ApplicationRunner{
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("============项目启动完毕！============");
+        System.out.println("=====================项目启动完毕！=====================");
     }
 }

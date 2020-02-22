@@ -14,7 +14,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/glanzz?characterEncoding=UTF-8&useUnicode=true&useSSL=true&serverTimezone=UTC
-    username: cms
+    username: root
     password: 123456
     #    type: com.alibaba.druid.pool.DruidDataSource
 
@@ -58,3 +58,5 @@ server:
   port: 9090
   tomcat:
     max-http-form-post-size: 8192
+    max-threads: 300
+    max-connections: 8192
