@@ -24,6 +24,10 @@ public class RetResponse<T> {
         return new RetResponse().setCode(code).setMsg(SUCCESS).setData(data);
     }
 
+    public RetResponse makeOKRsp(int code,String msg,T data) {
+        return new RetResponse().setCode(code).setMsg(msg).setData(data);
+    }
+
     public RetResponse makeErrRsp(int code,String msg) {
         return new RetResponse().setCode(code).setMsg(msg);
     }

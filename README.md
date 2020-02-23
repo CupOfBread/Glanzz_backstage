@@ -14,8 +14,10 @@
 ![](https://img.shields.io/badge/hibernate--validator-6.1.2.Final-brightgreen)
 ![](https://img.shields.io/badge/shiro--spring-1.5.0-brightgreen)
 ![](https://img.shields.io/badge/httpclient-4.5.11-brightgreen)
-![](https://img.shields.io/badge/fastjson-1.2.62-brightgreen)
 ![](https://img.shields.io/badge/hutool--all-5.1.3-brightgreen)
+![](https://img.shields.io/badge/javax.mail-1.5.0--b01-brightgreen)
+![](https://img.shields.io/badge/emoji--java-5.1.1-brightgreen)
+![](https://img.shields.io/badge/com.google.zxing.core-3.4.0-brightgreen)
 
 ## License
 ![GPL](https://img.shields.io/badge/license-GPL-blue)  
@@ -34,3 +36,4 @@ BILIBILI：https://space.bilibili.com/3300215
 #### 2020-2-21
  - 正式成立后端项目
  - 项目初始化
+ - 后端项目开始同步推进

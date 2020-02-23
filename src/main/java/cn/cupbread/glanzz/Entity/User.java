@@ -19,8 +19,8 @@ import java.util.List;
 @Table(name = "glanzz_user")
 @Accessors(chain = true)
 @Data
-//@ToString(callSuper = true,exclude = {"trades"})
-//@JsonIgnoreProperties(value = {"trades"})
+@ToString(callSuper = true,exclude = {"articles","comments"})
+@JsonIgnoreProperties(value = {"articles","comments"})
 public class User {
     @Id
     @GeneratedValue

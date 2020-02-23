@@ -12,7 +12,7 @@ import java.util.Date;
  * @Description:
  */
 @Entity
-@Table(name = "glanzz_article")
+@Table(name = "glanzz_token")
 @Accessors(chain = true)
 @Data
 public class Token {
@@ -25,5 +25,5 @@ public class Token {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date endTime;  //过期时间
+    private Date expTime;  //过期时间
 }

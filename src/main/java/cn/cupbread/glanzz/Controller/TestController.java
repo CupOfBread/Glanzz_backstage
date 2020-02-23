@@ -1,9 +1,12 @@
 package cn.cupbread.glanzz.Controller;
 
 import cn.cupbread.glanzz.Component.RetResponse;
-import org.springframework.stereotype.Controller;
+import cn.hutool.crypto.SecureUtil;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 /**
  * @Date: 2020/2/22
@@ -14,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-    @PostMapping("/test")
-    public RetResponse test(){
-        return new RetResponse().makeOKRsp(200);
+    @PostMapping("/md5")
+    public RetResponse test(HttpServletRequest request){
+        return new RetResponse().makeOKRsp(200, SecureUtil.md5(request.getParameter("md5")));
     }
 }
