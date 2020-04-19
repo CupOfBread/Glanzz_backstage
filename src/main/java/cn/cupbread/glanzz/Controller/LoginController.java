@@ -30,6 +30,7 @@ public class LoginController {
     public RetResponse login(HttpServletRequest request, HttpServletResponse response){
         String mail=request.getParameter("mail");
         String password=request.getParameter("password");
+        System.out.println(mail+password);
         RetResponse userRes=userService.check_user(mail,password);
 
         if (userRes.getCode()!=200) return userRes;

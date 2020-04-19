@@ -1,5 +1,6 @@
 package cn.cupbread.glanzz.Service;
 
+import ch.qos.logback.core.util.TimeUtil;
 import cn.cupbread.glanzz.DAO.TokenRepository;
 import cn.cupbread.glanzz.Entity.Token;
 import cn.hutool.Hutool;
@@ -30,8 +31,8 @@ public class TokenServiceImpl implements TokenService {
         if (token==null){
             token=new Token().setMail(mail).setToken(IdUtil.simpleUUID());
         }
-        token.setCreateTime(new Date());
-        token.setExpTime(DateUtil.offsetDay(DateUtil.date(new Date()),3));
+        token.setCreateTime(DateUtil.now());
+        token.setExpTime(DateUtil.formatDateTime(DateUtil.offsetDay(DateUtil.date(new Date()),3)));
         return tokenRepository.save(token);
     }
 
@@ -40,7 +41,8 @@ public class TokenServiceImpl implements TokenService {
     public Token check_token(String token) {
         Token token1=tokenRepository.findByToken(token);
         Date nowTime=new Date();
-        if (nowTime.getTime()>token1.getExpTime().getTime()) return null;
+        Date tokenExpTime=DateUtil.parse(token1.getExpTime());
+        if (nowTime.getTime()>tokenExpTime.getTime()) return null;
         return token1;
     }
 }

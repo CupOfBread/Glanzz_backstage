@@ -22,8 +22,6 @@ public class Token {
 
     private String token;
     private String mail;  //用户邮箱
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createTime;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date expTime;  //过期时间
+    private String createTime;
+    private String expTime;  //过期时间
 }

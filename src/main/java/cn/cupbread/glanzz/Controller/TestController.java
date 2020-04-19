@@ -1,13 +1,16 @@
 package cn.cupbread.glanzz.Controller;
 
 import cn.cupbread.glanzz.Component.RetResponse;
+import cn.cupbread.glanzz.Service.ArticleService;
+import cn.cupbread.glanzz.Service.ClassificationService;
 import cn.hutool.crypto.SecureUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
 
 /**
  * @Date: 2020/2/22
@@ -17,6 +20,10 @@ import java.util.Date;
 
 @RestController
 public class TestController {
+    @Autowired
+    private ArticleService articleService;
+    @Autowired
+    private ClassificationService classificationService;
 
     @PostMapping("/md5")
     public RetResponse md5(HttpServletRequest request){
@@ -25,6 +32,8 @@ public class TestController {
 
     @GetMapping("/test")
     public RetResponse test(HttpServletRequest request){
-        return new RetResponse().makeOKRsp(200, "200");
+//        classificationService.save_classifi(new Classification().setName("哈哈").setEname("hh"));
+//        articleService.save_article(new Article().setClassification(classificationService.get_classifi_by_id((long)1)));
+        return new RetResponse().makeOKRsp(200, "200",articleService.get_article_page_all(0,10, Sort.Direction.DESC));
     }
 }

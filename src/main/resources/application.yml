@@ -13,14 +13,13 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/glanzz?characterEncoding=UTF-8&useUnicode=true&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://localhost:3306/glanzz?characterEncoding=UTF-8&useUnicode=true&serverTimezone=UTC&useSSL=true
     username: root
     password: 123456
     #    type: com.alibaba.druid.pool.DruidDataSource
 
     # 下面为连接池的补充设置，应用到上面所有数据源中
     # 初始化大小，最小，最大
-
     initialSize: 5
     minIdle: 5
     maxActive: 20

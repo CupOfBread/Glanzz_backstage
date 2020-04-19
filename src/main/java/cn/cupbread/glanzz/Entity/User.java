@@ -31,8 +31,7 @@ public class User {
     private String gravatar;  //头像
     private String password;  //密码[MD5加密]
     private String state;  //状态
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createTime;  //创建时间
+    private String createTime;  //创建时间
 
     private String userGroup;  //用户组
 

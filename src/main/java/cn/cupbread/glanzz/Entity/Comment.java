@@ -23,14 +23,13 @@ public class Comment {
     private Long id;
 
     private String content;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createTime; //创建时间
+    private String createTime; //创建时间
     private Boolean publish;  //发布状态
 
     @ManyToOne
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Article article;
 
     @OneToMany(mappedBy = "parentComment")

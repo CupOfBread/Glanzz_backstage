@@ -1,6 +1,9 @@
 package cn.cupbread.glanzz.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -15,6 +18,7 @@ import java.util.List;
 @Entity
 @Table(name = "glanzz_classification")
 @Accessors(chain = true)
+@JsonIgnoreProperties(value = {"articles"})
 @Data
 public class Classification {
     @Id
@@ -24,8 +28,7 @@ public class Classification {
     private String name;  //分类名称
     private String ename;  //分类别名[英文]
     private String pic;  //分类图片
-    private String parent;  //上级分类
-
-    @OneToMany(mappedBy = "classification")
+    @ToString.Exclude
+    @OneToMany(mappedBy = "classification",fetch = FetchType.EAGER)
     private List<Article> articles=new ArrayList<>();
 }

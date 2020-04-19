@@ -33,7 +33,7 @@ public class StatusCodeController {
         return new RetResponse().makeErrRsp(404,"NOT FOUND");
     }
 
-    //token 过期
+    //token 过期或不存在
     @RequestMapping("/901")
     public RetResponse code_901(){
         return new RetResponse().makeErrRsp(901,"TOKEN EXPIRED");

@@ -14,7 +14,7 @@ public class RetResponse<T> {
     private final static String SUCCESS = "success";
     public int code;
     private String msg;
-    private T Data;
+    private T data;
 
     public  RetResponse makeOKRsp(int code) {
         return new RetResponse().setCode(code).setMsg(SUCCESS);

@@ -1,6 +1,7 @@
 package cn.cupbread.glanzz.Entity;
 
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -27,25 +28,25 @@ public class Article {
     @Lob
     private String content;
     private String headPicture; //头图
-    private String views;
+    private Long views;
     private Boolean commentable;  //是否可评论
     private Boolean publish;  //是否发布
     private Boolean recommend;  //是否推荐
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createTime;  //创建时间
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updateTime;  //最后更新时间
+    private String createTime;  //创建时间
+    private String updateTime;  //最后更新时间
 
     @ManyToOne
     private Classification classification;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST})
-    private List<Tag> tags=new ArrayList<>();
+//    @OrderColumn
+//    @ManyToMany(cascade = {CascadeType.PERSIST},fetch = FetchType.EAGER)
+//    private List<Tag> tags=new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
-    @OneToMany(mappedBy = "article")
+    @OrderColumn
+    @OneToMany(mappedBy = "article",fetch = FetchType.EAGER)
     private List<Comment> comments=new ArrayList<>();
 
 }
