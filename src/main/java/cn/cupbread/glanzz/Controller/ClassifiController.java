@@ -31,8 +31,18 @@ public class ClassifiController {
         String name=request.getParameter("name");
         String ename=request.getParameter("ename");
         String pic=request.getParameter("pic");
-        String parent=request.getParameter("parent");
         Classification classification=classificationService.save_classifi(new Classification().setName(name).setEname(ename).setPic(pic));
+        return new RetResponse().makeOKRsp(200,classification);
+    }
+
+    // 修改
+    @PostMapping("/classifi/edit")
+    public RetResponse editClassification(HttpServletRequest request) {
+        Long classifyId = Long.parseLong(request.getParameter("id"));
+        String name=request.getParameter("name");
+        String ename=request.getParameter("ename");
+        String pic=request.getParameter("pic");
+        Classification classification=classificationService.save_classifi(new Classification().setName(name).setEname(ename).setPic(pic).setId(classifyId));
         return new RetResponse().makeOKRsp(200,classification);
     }
 
@@ -40,7 +50,6 @@ public class ClassifiController {
     @PostMapping("/classifi/del")
     public RetResponse delClassification(HttpServletRequest request) {
         Long classifyId = Long.parseLong(request.getParameter("id"));
-        classificationService.del_classifi(classifyId);
-        return new RetResponse().makeOKRsp(200);
+        return classificationService.del_classifi(classifyId);
     }
 }

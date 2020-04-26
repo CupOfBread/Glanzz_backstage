@@ -37,7 +37,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Transactional
     @Override
     public Article save_article(Article article) {
-        article.setCreateTime(DateUtil.now());
+        article.setUpdateTime(DateUtil.now());
         return articleRepository.save(article);
     }
 

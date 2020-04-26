@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @Date: 2020/2/23
  * @Author: CupOfBread
@@ -31,5 +33,25 @@ public class UserServiceImpl implements UserService {
     @Override
     public User get_user_byMail(String mail) {
         return userRepository.findByMail(mail);
+    }
+
+    @Transactional
+    @Override
+    public User add_user(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
+    public List<User> get_user_list() {
+        List<User> users=userRepository.findAll();
+        for (User user:users) {
+            user.setPassword(null);
+        }
+        return users;
+    }
+
+    @Override
+    public void del_user(Long id) {
+        userRepository.deleteById(id);
     }
 }

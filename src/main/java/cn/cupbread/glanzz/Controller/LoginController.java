@@ -45,6 +45,10 @@ public class LoginController {
         res.put("expTime",token.getExpTime());
 
         return new RetResponse().makeOKRsp(200,res);
+    }
 
+    @PostMapping("/token")
+    public RetResponse checkToken(HttpServletRequest request){
+        return new RetResponse().makeOKRsp(200);
     }
 }

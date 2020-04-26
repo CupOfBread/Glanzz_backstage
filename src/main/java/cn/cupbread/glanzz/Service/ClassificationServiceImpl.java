@@ -1,5 +1,6 @@
 package cn.cupbread.glanzz.Service;
 
+import cn.cupbread.glanzz.Component.RetResponse;
 import cn.cupbread.glanzz.DAO.ClassificationRepository;
 import cn.cupbread.glanzz.Entity.Classification;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,13 @@ public class ClassificationServiceImpl implements ClassificationService {
 
     @Transactional
     @Override
-    public void del_classifi(Long id) {
-        classificationRepository.deleteById(id);
+    public RetResponse del_classifi(Long id) {
+        Classification classification=get_classifi_by_id(id);
+        if (classification.getArticles()!=null){
+            classificationRepository.deleteById(id);
+            return new RetResponse().makeOKRsp(200);
+        }
+        return new RetResponse().makeErrRsp(500,"当前分类下仍有文章！");
     }
 
     @Transactional

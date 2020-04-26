@@ -36,7 +36,6 @@ public class BackstageInterceptor implements HandlerInterceptor {
         String token=request.getHeader("Authorization");
         String path=request.getServletPath();
 
-
         // token校验
         if (token==null) {
             response.sendRedirect("/code/901");

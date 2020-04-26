@@ -30,6 +30,9 @@ public class User {
     private String mail;  //邮箱  [用于登录]
     private String gravatar;  //头像
     private String password;  //密码[MD5加密]
+    @Basic(fetch = FetchType.LAZY)
+    @Lob
+    private String description;  //个人描述
     private String state;  //状态
     private String createTime;  //创建时间
 

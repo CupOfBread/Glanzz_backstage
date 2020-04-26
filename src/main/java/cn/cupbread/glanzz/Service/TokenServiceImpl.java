@@ -40,6 +40,7 @@ public class TokenServiceImpl implements TokenService {
     @Override
     public Token check_token(String token) {
         Token token1=tokenRepository.findByToken(token);
+        if (token1==null) return null;
         Date nowTime=new Date();
         Date tokenExpTime=DateUtil.parse(token1.getExpTime());
         if (nowTime.getTime()>tokenExpTime.getTime()) return null;
