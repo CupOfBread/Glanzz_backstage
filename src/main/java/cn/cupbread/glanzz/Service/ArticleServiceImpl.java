@@ -2,6 +2,7 @@ package cn.cupbread.glanzz.Service;
 
 import cn.cupbread.glanzz.DAO.ArticleRepository;
 import cn.cupbread.glanzz.Entity.Article;
+import cn.cupbread.glanzz.Entity.Comment;
 import cn.hutool.core.date.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @Date: 2020/3/10
@@ -51,6 +54,13 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public Article get_article_by_id(Long id) {
         return articleRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Comment> get_article_comment(Long articleId) {
+        Article article=articleRepository.findById(articleId).orElse(null);
+        if (article!=null) return article.getComments();
+        return null;
     }
 
     @Transactional

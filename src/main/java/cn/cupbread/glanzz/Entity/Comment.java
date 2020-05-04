@@ -1,6 +1,8 @@
 package cn.cupbread.glanzz.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -15,6 +17,8 @@ import java.util.List;
  */
 @Entity
 @Table(name = "glanzz_comment")
+@ToString(callSuper = true,exclude = {"article"})
+@JsonIgnoreProperties(value = {"article","parentComment"})
 @Accessors(chain = true)
 @Data
 public class Comment {
@@ -32,9 +36,9 @@ public class Comment {
     @ManyToOne(fetch = FetchType.EAGER)
     private Article article;
 
-    @OneToMany(mappedBy = "parentComment")
+    @OneToMany(mappedBy = "parentComment",fetch = FetchType.EAGER)
     private List<Comment> replyComment = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Comment parentComment;
 }
