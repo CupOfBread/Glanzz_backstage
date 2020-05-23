@@ -6,6 +6,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
 @Data
 @ToString(callSuper = true,exclude = {"articles","comments"})
 @JsonIgnoreProperties(value = {"articles","comments"})
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue
     private Long id;

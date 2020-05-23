@@ -16,7 +16,8 @@ spring:
     url: jdbc:mysql://localhost:3306/glanzz?characterEncoding=UTF-8&useUnicode=true&serverTimezone=UTC&useSSL=true
     username: root
     password: 123456
-    #    type: com.alibaba.druid.pool.DruidDataSource
+
+    type: com.alibaba.druid.pool.DruidDataSource
 
     # 下面为连接池的补充设置，应用到上面所有数据源中
     # 初始化大小，最小，最大
@@ -44,9 +45,18 @@ spring:
     open-in-view: false
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 
-#  data:
-#    solr:
-#      host: http://127.0.0.1:6061/solr
+
+  redis:
+    host: 127.0.0.1
+    database: 6
+    port: 6379
+    jedis:
+      pool:
+        max-active: 200
+        max-wait: -1
+        max-idle: 10
+        min-idle: 0
+    timeout: 1000
 
 logging:
   level:
@@ -54,6 +64,7 @@ logging:
     com.imcoding: trace
   file:
     name: log/glanzz
+
 server:
   port: 9090
   tomcat:

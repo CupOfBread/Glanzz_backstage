@@ -37,6 +37,12 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
+    public User get_user_byId(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
+    @Transactional
+    @Override
     public User add_user(User user) {
         return userRepository.save(user);
     }

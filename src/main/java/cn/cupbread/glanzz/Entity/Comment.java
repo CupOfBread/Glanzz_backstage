@@ -6,6 +6,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,11 +18,11 @@ import java.util.List;
  */
 @Entity
 @Table(name = "glanzz_comment")
-@ToString(callSuper = true,exclude = {"article"})
-@JsonIgnoreProperties(value = {"article","parentComment"})
+//@ToString(callSuper = true,exclude = {"article"})
+@JsonIgnoreProperties(value = {"parentComment"})
 @Accessors(chain = true)
 @Data
-public class Comment {
+public class Comment implements Serializable {
     @Id
     @GeneratedValue
     private Long id;

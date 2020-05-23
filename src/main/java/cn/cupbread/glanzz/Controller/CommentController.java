@@ -1,6 +1,7 @@
 package cn.cupbread.glanzz.Controller;
 
 import cn.cupbread.glanzz.Component.RetResponse;
+import cn.cupbread.glanzz.Entity.Article;
 import cn.cupbread.glanzz.Entity.Comment;
 import cn.cupbread.glanzz.Entity.User;
 import cn.cupbread.glanzz.Service.ArticleService;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @Author ：Cup_Of_Bread
  * @Date ：Created in 2020/4/26 16:29
- * @Description ：
+ * @Description ：评论控制器
  * @Version: :
  */
 @RestController
@@ -65,7 +66,7 @@ public class CommentController {
         String id=request.getParameter("id");
         String articleId=request.getParameter("articleId");
         User user=null;
-        String content=request.getParameter("conent");
+        String content=request.getParameter("content");
         String createTime=request.getParameter("createTime");
         Boolean publish=Boolean.parseBoolean(request.getParameter("publish"));
         Comment comment=new Comment();
@@ -73,9 +74,9 @@ public class CommentController {
             comment=commentService.get_comment_by_id(Long.parseLong(id));
         }else {
             user=userService.get_user_byMail(tokenService.check_token(request.getHeader("Authorization")).getMail());
+            comment.setArticle(articleService.get_article_by_id(Long.parseLong(articleId)).setUser(user));
         }
-        comment.setContent(content).setCreateTime(createTime).setUser(user).setPublish(publish)
-                .setArticle(articleService.get_article_by_id(Long.parseLong(articleId)));
+        comment.setContent(content).setCreateTime(createTime).setPublish(publish);
         return new RetResponse().makeOKRsp(200,commentService.save_comment(comment));
     }
 
@@ -84,5 +85,18 @@ public class CommentController {
         Long id=Long.parseLong(request.getParameter("id"));
         commentService.del_comment(id);
         return new RetResponse().makeOKRsp(200);
+    }
+
+    @PostMapping("/comments/changePublish")
+    public RetResponse changePublish(HttpServletRequest request) {
+        Long commentId = Long.parseLong(request.getParameter("id"));
+        Boolean publish = Boolean.parseBoolean(request.getParameter("publish"));
+//        System.out.println(articleId.toString()+publish);
+        Comment comment = commentService.change_comment_publish_state(commentId);
+        if (comment.getPublish() == publish) {
+            return new RetResponse().makeOKRsp(200);
+        } else {
+            return new RetResponse().makeErrRsp(500, "内部错误，状态更改失败");
+        }
     }
 }

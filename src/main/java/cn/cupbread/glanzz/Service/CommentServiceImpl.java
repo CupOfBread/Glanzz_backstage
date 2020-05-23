@@ -2,6 +2,7 @@ package cn.cupbread.glanzz.Service;
 
 import cn.cupbread.glanzz.DAO.CommentRepository;
 import cn.cupbread.glanzz.DAO.UserRepository;
+import cn.cupbread.glanzz.Entity.Article;
 import cn.cupbread.glanzz.Entity.Comment;
 import cn.cupbread.glanzz.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,5 +66,13 @@ public class CommentServiceImpl implements CommentService {
     public Page<Comment> get_comment_page(int page, int size, Sort.Direction direction) {
         Pageable pageable = PageRequest.of(page, size, direction, "id");
         return commentRepository.findAll(pageable);
+    }
+
+    @Override
+    public Comment change_comment_publish_state(Long id) {
+        Comment comment=commentRepository.findById(id).orElse(null);
+        if (comment != null) {
+            return commentRepository.save(comment.setPublish(!comment.getPublish()));
+        } else return null;
     }
 }

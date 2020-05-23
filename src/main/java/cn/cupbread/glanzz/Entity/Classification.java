@@ -7,6 +7,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ import java.util.List;
 @Accessors(chain = true)
 @JsonIgnoreProperties(value = {"articles"})
 @Data
-public class Classification {
+public class Classification implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
