@@ -32,7 +32,9 @@ BILIBILI：https://space.bilibili.com/3300215
 
 ## Reward and Support
 
-<img src="https://www.cupbread.cn/zfb.png" alt="zfb" style="zoom: 33%;" /><img src="https://www.cupbread.cn/wx.png" alt="zfb" style="zoom: 33%;" />
+| 支付宝                                        | 微信                                        |
+| --------------------------------------------- | ------------------------------------------- |
+| <img src="https://www.cupbread.cn/zfb.png" /> | <img src="https://www.cupbread.cn/wx.png"/> |g src="https://www.cupbread.cn/zfb.png" alt="zfb" style="zoom: 33%;" /><img src="https://www.cupbread.cn/wx.png" alt="zfb" style="zoom: 33%;" />
 
 ## Update record
 #### 2020-2-21
