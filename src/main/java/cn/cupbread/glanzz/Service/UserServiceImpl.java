@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
         User user=userRepository.findByMail(mail);
         if (user==null) return new RetResponse().makeErrRsp(404,"用户不存在");
         if (!user.getState().equals("正常")) return new RetResponse().makeErrRsp(403,user.getState());
-        if (!user.getPassword().equals(password)) return new RetResponse().makeErrRsp(422,"用户不存在");
+        if (!user.getPassword().equals(password)) return new RetResponse().makeErrRsp(422,"用户密码错误");
         return new RetResponse().makeOKRsp(200,user);
     }
 

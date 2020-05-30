@@ -11,6 +11,7 @@ import javax.persistence.*;
  * @Description ：
  * @Version: :
  */
+
 @Entity
 @Table(name = "glanzz_option")
 @Accessors(chain = true)

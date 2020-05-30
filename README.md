@@ -11,16 +11,16 @@
  - druid-1.1.21
  - lombok-1.18.12
  - commonmark-0.14.0
- - hibernate--validator-6.1.2.Final
- - shiro--spring-1.5.0
+ - hibernate-validator-6.1.2.Final
+ - shiro-spring-1.5.0
  - httpclient-4.5.11
- - hutool--all-5.1.3
+ - hutool-all-5.1.3
  - javax.mail-1.5.0--b01
- - emoji--java-5.1.1
+ - emoji-java-5.1.1
  - com.google.zxing.core-3.4.0
 
 ## License
- - GPL
+ - GPL v3
 
 ## Contact
 作者：一杯面包  
@@ -31,6 +31,8 @@ QQ:671547162
 BILIBILI：https://space.bilibili.com/3300215
 
 ## Reward and Support
+
+<img src="https://www.cupbread.cn/zfb.png" alt="zfb" style="zoom: 33%;" /><img src="https://www.cupbread.cn/wx.png" alt="zfb" style="zoom: 33%;" />
 
 ## Update record
 #### 2020-2-21

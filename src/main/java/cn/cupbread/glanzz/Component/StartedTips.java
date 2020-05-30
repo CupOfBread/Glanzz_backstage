@@ -13,10 +13,10 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class StartedTips implements ApplicationRunner{
+public class StartedTips implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         System.out.println("=====================项目启动完毕！=====================");
-//        System.out.println(SecureUtil.md5("123456"));
+        System.out.println(SecureUtil.md5("123456"));
     }
 }

@@ -56,7 +56,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Transactional
     @Override
-    @Cacheable(cacheNames = {"articles"})
+//    @Cacheable(cacheNames = {"articles"})
     public Article get_article_by_id(Long id) {
         return articleRepository.findById(id).orElse(null);
     }
