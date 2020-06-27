@@ -66,7 +66,7 @@ logging:
     name: log/glanzz
 
 server:
-  port: 9090
+  port: 9099
   tomcat:
     max-http-form-post-size: 8192
     max-threads: 300

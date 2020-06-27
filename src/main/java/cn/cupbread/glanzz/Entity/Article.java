@@ -27,17 +27,18 @@ public class Article implements Serializable{
     @GeneratedValue
     private Long id;
 
-    private String title;  //标题
+    private String type; // 文章(article)或页面(Page)
+    private String title;  // 标题
     @Basic(fetch = FetchType.LAZY)
     @Lob
     private String content;
-    private String headPicture; //头图
+    private String headPicture; // 头图
     private Long views;
-    private Boolean commentable;  //是否可评论
-    private Boolean publish;  //是否发布
-    private Boolean recommend;  //是否推荐
-    private String createTime;  //创建时间
-    private String updateTime;  //最后更新时间
+    private Boolean commentable;  // 是否可评论
+    private Boolean publish;  // 是否发布
+    private Boolean recommend;  // 是否推荐
+    private String createTime;  // 创建时间
+    private String updateTime;  // 最后更新时间
 
     @ManyToOne
     private Classification classification;

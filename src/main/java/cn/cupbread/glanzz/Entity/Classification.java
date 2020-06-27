@@ -29,6 +29,7 @@ public class Classification implements Serializable {
     private String name;  //分类名称
     private String ename;  //分类别名[英文]
     private String pic;  //分类图片
+    private String description;  //描述
     @ToString.Exclude
     @OneToMany(mappedBy = "classification",fetch = FetchType.EAGER)
     private List<Article> articles=new ArrayList<>();
